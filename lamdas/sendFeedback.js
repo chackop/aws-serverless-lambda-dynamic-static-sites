@@ -14,11 +14,19 @@ exports.handler = function (event, context, callback) {
     Message: {
       Body: {
         Text: {
-          Data: "Hello this is the email body!",
+          Data:
+            "Name" +
+            params["name"] +
+            "\nEmail" +
+            params["email"] +
+            "\nExperience" +
+            params["experience"] +
+            "\nMessage" +
+            params["comments"],
         },
       },
       Subject: {
-        Data: "Email from Lambda!",
+        Data: "Email from " + params["name"],
       },
     },
     Source: "chacko@skykatltd.com",
