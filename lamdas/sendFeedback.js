@@ -4,7 +4,7 @@ const AWS = require("aws-sdk");
 // Object to handle email
 var ses = new AWS.SES();
 
-exports.handler = async (event) => {
+exports.handler = function (event, context, callback) {
   const params = querystring.parse(event.body);
 
   var emailParams = {
@@ -37,5 +37,6 @@ exports.handler = async (event) => {
       "Thank you, " + params["name"] + "! " + "Your feedback was received!"
     ),
   };
-  return response;
+  // return response;
+  callback(null, response);
 };
